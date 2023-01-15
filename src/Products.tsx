@@ -10,7 +10,6 @@ import { useNavigate, useParams } from "react-router-dom";
 function Products() {
 	const [response, setResponse] = useState<any>();
 	const [currentPageItems, setCurrentPageItems] = useState<any[]>([]);
-	// const [page, setPage] = useState(1);
 	const params = useParams();
 	const page = params.page ? parseInt(params.page) : 1;
 	const navigate = useNavigate();
@@ -25,6 +24,7 @@ function Products() {
 			.then((res) => {
 				setCurrentPageItems(res.data.data);
 				setResponse(res.data);
+				console.log(res);
 			})
 			.catch((err) => console.log(err));
 	}, [params.page]);
