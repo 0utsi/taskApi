@@ -3,15 +3,15 @@ import productsAPI from "./API/productsAPI";
 import { useEffect } from "react";
 import { SearchBar } from "./components/searchBar";
 import { useState } from "react";
-import { ProductsTable } from "./components/ProductsTable";
-import { Pagination } from "./components/Pagination";
 import { useNavigate, useParams } from "react-router-dom";
+import ProductsTable from "./components/ProductsTable";
+import Pagination from "./components/Pagination";
 
 function Products() {
 	const [response, setResponse] = useState<any>();
 	const [currentPageItems, setCurrentPageItems] = useState<any[]>([]);
 	const params = useParams();
-	const page = params.page ? parseInt(params.page) : 1;
+	const page: number = params.page ? parseInt(params.page) : 1;
 	const navigate = useNavigate();
 
 	useEffect(() => {
@@ -24,7 +24,6 @@ function Products() {
 			.then((res) => {
 				setCurrentPageItems(res.data.data);
 				setResponse(res.data);
-				console.log(res);
 			})
 			.catch((err) => console.log(err));
 	}, [params.page]);
@@ -41,7 +40,7 @@ function Products() {
 		<div className="App">
 			<SearchBar />
 			<ProductsTable currentPageItems={currentPageItems} />
-			<Pagination page={params.page} nextPage={nextPage} prevPage={prevPage} />
+			<Pagination page={page} nextPage={nextPage} prevPage={prevPage} />
 		</div>
 	);
 }

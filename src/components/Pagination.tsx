@@ -1,7 +1,14 @@
 import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FC } from "react";
 
-export function Pagination(props) {
+interface PaginationProps {
+	nextPage: () => void;
+	prevPage: () => void;
+	page: number;
+}
+
+const Pagination: FC<PaginationProps> = (props) => {
 	return (
 		<div className="pagination">
 			<FontAwesomeIcon
@@ -17,4 +24,6 @@ export function Pagination(props) {
 			/>
 		</div>
 	);
-}
+};
+
+export default Pagination;

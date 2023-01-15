@@ -1,4 +1,17 @@
-export function ProductsTable(props) {
+import { FC, useState } from "react";
+
+interface ProductProps {
+	currentPageItems: any;
+}
+
+const ProductsTable: FC<ProductProps> = (props) => {
+	const [openedModal, setOpenedModal] = useState<any>(null);
+
+	const openInfoModal = (i) => {
+		setOpenedModal(i);
+		console.log(props.currentPageItems[openedModal]);
+	};
+
 	return (
 		<table>
 			<thead>
@@ -9,9 +22,10 @@ export function ProductsTable(props) {
 				</tr>
 			</thead>
 			<tbody>
-				{props.currentPageItems.map((item) => {
+				{props.currentPageItems.map((item, i) => {
 					return (
 						<tr
+							onClick={() => openInfoModal(i)}
 							style={{
 								backgroundColor: item.color,
 							}}
@@ -24,6 +38,13 @@ export function ProductsTable(props) {
 					);
 				})}
 			</tbody>
+			{/* {openedModal && (
+				<div className="infoModal">
+					console.log({props.currentPageItems[openedModal]})
+				</div>
+			)} */}
 		</table>
 	);
-}
+};
+
+export default ProductsTable;
