@@ -2,14 +2,14 @@ import { FC, useState } from "react";
 import { Datum } from "../Interfaces/DataInterface";
 
 interface productDataInterface {
-	data: Datum[]
+	data: Datum[];
 }
 
 const ProductsTable: FC<productDataInterface> = (props) => {
 	const [openedModal, setOpenedModal] = useState<any>(null);
 
 	const openInfoModal = (i) => {
-		console.log(props.[openedModal]);
+		console.log(props.data[openedModal]);
 		setOpenedModal(i);
 	};
 
