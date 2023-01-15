@@ -1,14 +1,15 @@
 import { FC, useState } from "react";
+import { Datum } from "../Interfaces/DataInterface";
 
-interface ProductProps {
-	currentPageItems: any;
+interface productDataInterface {
+	data: Datum[]
 }
 
-const ProductsTable: FC<ProductProps> = (props) => {
+const ProductsTable: FC<productDataInterface> = (props) => {
 	const [openedModal, setOpenedModal] = useState<any>(null);
 
 	const openInfoModal = (i) => {
-		console.log(props.currentPageItems[openedModal]);
+		console.log(props.[openedModal]);
 		setOpenedModal(i);
 	};
 
@@ -23,7 +24,7 @@ const ProductsTable: FC<ProductProps> = (props) => {
 					</tr>
 				</thead>
 				<tbody>
-					{props.currentPageItems.map((item, i) => {
+					{props.data.map((item, i) => {
 						return (
 							<tr
 								onClick={() => openInfoModal(i)}
@@ -40,7 +41,7 @@ const ProductsTable: FC<ProductProps> = (props) => {
 					})}
 				</tbody>
 			</table>
-			{openedModal && <div className="infoModal"></div>}
+			{/* {openedModal && <div className="infoModal"></div>} */}
 		</>
 	);
 };

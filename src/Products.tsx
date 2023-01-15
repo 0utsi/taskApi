@@ -6,10 +6,10 @@ import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import ProductsTable from "./components/ProductsTable";
 import Pagination from "./components/Pagination";
+import { ProductsResponseData } from "./Interfaces/DataInterface";
 
 function Products() {
-	const [response, setResponse] = useState<any>();
-	const [currentPageItems, setCurrentPageItems] = useState<any[]>([]);
+	const [response, setResponse] = useState<ProductsResponseData>(null);
 	const params = useParams();
 	const page: number = params.page ? parseInt(params.page) : 1;
 	const navigate = useNavigate();
@@ -22,7 +22,6 @@ function Products() {
 				},
 			})
 			.then((res) => {
-				setCurrentPageItems(res.data.data);
 				setResponse(res.data);
 			})
 			.catch((err) => console.log(err));
@@ -39,7 +38,7 @@ function Products() {
 	return (
 		<div className="App">
 			<SearchBar />
-			<ProductsTable currentPageItems={currentPageItems} />
+			<ProductsTable data={response.data} />
 			<Pagination page={page} nextPage={nextPage} prevPage={prevPage} />
 		</div>
 	);
