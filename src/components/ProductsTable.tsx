@@ -2,15 +2,14 @@ import { FC, useState } from "react";
 import { Datum } from "../Interfaces/DataInterface";
 import DetailsModal from "./DetailsModal";
 
-interface productDataInterface {
-	data: Datum[];
+interface productTableProps {
+	data: Datum[] | Datum;
 }
 
-const ProductsTable: FC<productDataInterface> = (props) => {
+const ProductsTable: FC<productTableProps> = (props) => {
 	const [openedModal, setOpenedModal] = useState<any>(null);
 
 	const openInfoModal = (i) => {
-		console.log(props.data[openedModal]);
 		setOpenedModal(i);
 	};
 
@@ -24,22 +23,36 @@ const ProductsTable: FC<productDataInterface> = (props) => {
 						<th scope="col">year</th>
 					</tr>
 				</thead>
+
 				<tbody className="tBody">
-					{props.data.map((item, i) => {
-						return (
-							<tr
-								onClick={() => openInfoModal(i)}
-								style={{
-									backgroundColor: item.color,
-								}}
-								key={item.id}
-							>
-								<td>{item.id}</td>
-								<td>{item.name}</td>
-								<td>{item.year}</td>
-							</tr>
-						);
-					})}
+					{Array.isArray(props.data) ? (
+						props.data.map((item, i) => {
+							return (
+								<tr
+									onClick={() => openInfoModal(i)}
+									style={{
+										backgroundColor: item.color,
+									}}
+									key={item.id}
+								>
+									<td>{item.id}</td>
+									<td>{item.name}</td>
+									<td>{item.year}</td>
+								</tr>
+							);
+						})
+					) : (
+						<tr
+							style={{
+								backgroundColor: props.data.color,
+							}}
+							key={props.data.id}
+						>
+							<td>{props.data.id}</td>
+							<td>{props.data.name}</td>
+							<td>{props.data.year}</td>
+						</tr>
+					)}
 				</tbody>
 			</table>
 			<DetailsModal

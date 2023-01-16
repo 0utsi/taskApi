@@ -10,6 +10,7 @@ import { SearchBar } from "./components/searchBar";
 
 function Products() {
 	const [response, setResponse] = useState<ProductsResponseData>(null);
+	const [filteredProducts, setFilteredProducts] = useState([]);
 	const params = useParams();
 	const page: number = params.page ? parseInt(params.page) : 1;
 
@@ -18,18 +19,23 @@ function Products() {
 			.get("/api/products", {
 				params: {
 					page: params.page,
+					id: filteredProducts,
 				},
 			})
 			.then((res) => {
 				setResponse(res.data);
 			})
 			.catch((err) => console.log(err));
-	}, [params.page]);
+	}, [params.page, filteredProducts]);
+
+	const filterById = (id) => {
+		setFilteredProducts(id);
+	};
 
 	if (!response) return <span>Loading...</span>;
 	return (
 		<div className="App">
-			<SearchBar />
+			<SearchBar filterById={filterById} />
 			<ProductsTable data={response.data} />
 			<Pagination page={page} totalPages={response.total_pages} />
 		</div>

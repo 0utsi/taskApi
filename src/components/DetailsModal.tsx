@@ -14,7 +14,7 @@ const DetailsModal: FC<detailsModalprops> = (props) => {
 				<tbody>
 					{Object.entries(props.data).map(([key, value]) => {
 						return (
-							<tr>
+							<tr key={key}>
 								<td>{key}</td>
 								<td>{value}</td>
 							</tr>

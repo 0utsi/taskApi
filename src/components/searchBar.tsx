@@ -1,23 +1,28 @@
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
+import { FC, useState } from "react";
+import { Datum } from "../Interfaces/DataInterface";
 
-export const SearchBar = () => {
+// interface searchBarProps {
+// 	ids: number[];
+// }
+
+export const SearchBar = (props) => {
 	const [idToFilter, setIdToFilter] = useState("");
 
-	const filterById = (e) => {
+	const passId = (e) => {
 		e.stopPropagation();
 		e.preventDefault();
-		setIdToFilter(e.target.value);
-		console.log(e);
+
+		props.filterById(idToFilter);
 	};
 
 	return (
 		<div className="search-container">
-			<form onSubmit={filterById}>
+			<form onSubmit={passId}>
 				<input
-					name="option"
 					autoComplete="off"
+					type="number"
 					className="search-input"
 					value={idToFilter}
 					onChange={(e) => setIdToFilter(e.target.value)}
