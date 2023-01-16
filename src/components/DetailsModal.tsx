@@ -9,19 +9,20 @@ interface detailsModalprops {
 const DetailsModal: FC<detailsModalprops> = (props) => {
 	if (!props.isOpen) return;
 	return (
-		<table>
-			<tbody>
-				<button onClick={props.onClose}>Zamknij</button>
-				{Object.entries(props.data).map(([key, value]) => {
-					return (
-						<tr>
-							<td>{key}</td>
-							<td>{value}</td>
-						</tr>
-					);
-				})}
-			</tbody>
-		</table>
+		<div className="bg" onClick={props.onClose}>
+			<table className="detailsModal">
+				<tbody>
+					{Object.entries(props.data).map(([key, value]) => {
+						return (
+							<tr>
+								<td>{key}</td>
+								<td>{value}</td>
+							</tr>
+						);
+					})}
+				</tbody>
+			</table>
+		</div>
 	);
 };
 

@@ -16,7 +16,7 @@ const ProductsTable: FC<productDataInterface> = (props) => {
 
 	return (
 		<>
-			<table>
+			<table className="productsDetails">
 				<thead>
 					<tr className="rowHeader">
 						<th scope="col">ID</th>
