@@ -3,7 +3,7 @@ import productsAPI from "./API/productsAPI";
 import { useEffect } from "react";
 import { SearchBar } from "./components/searchBar";
 import { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import ProductsTable from "./components/ProductsTable";
 import Pagination from "./components/Pagination";
 import { ProductsResponseData } from "./Interfaces/DataInterface";

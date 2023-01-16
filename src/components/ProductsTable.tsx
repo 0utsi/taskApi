@@ -1,5 +1,6 @@
 import { FC, useState } from "react";
 import { Datum } from "../Interfaces/DataInterface";
+import DetailsModal from "./DetailsModal";
 
 interface productDataInterface {
 	data: Datum[];
@@ -41,7 +42,7 @@ const ProductsTable: FC<productDataInterface> = (props) => {
 					})}
 				</tbody>
 			</table>
-			{/* {openedModal && <div className="infoModal"></div>} */}
+			{openedModal !== null && <DetailsModal data={props.data[openedModal]} />}
 		</>
 	);
 };
