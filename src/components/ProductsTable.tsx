@@ -17,14 +17,14 @@ const ProductsTable: FC<productDataInterface> = (props) => {
 	return (
 		<>
 			<table className="productsDetails">
-				<thead>
+				<thead className="tHead">
 					<tr className="rowHeader">
 						<th scope="col">ID</th>
 						<th scope="col">name</th>
 						<th scope="col">year</th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody className="tBody">
 					{props.data.map((item, i) => {
 						return (
 							<tr

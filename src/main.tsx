@@ -13,6 +13,10 @@ const router = createBrowserRouter([
 		path: "/",
 		element: <Products />,
 	},
+	{
+		path: "/products/:page/:id",
+		element: <Products />,
+	},
 ]);
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(

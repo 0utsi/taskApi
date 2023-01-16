@@ -9,7 +9,7 @@ interface detailsModalprops {
 const DetailsModal: FC<detailsModalprops> = (props) => {
 	if (!props.isOpen) return;
 	return (
-		<div className="bg" onClick={props.onClose}>
+		<div className="modal-bg" onClick={props.onClose}>
 			<table className="detailsModal">
 				<tbody>
 					{Object.entries(props.data).map(([key, value]) => {
