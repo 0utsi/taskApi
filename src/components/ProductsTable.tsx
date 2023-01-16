@@ -42,7 +42,11 @@ const ProductsTable: FC<productDataInterface> = (props) => {
 					})}
 				</tbody>
 			</table>
-			{openedModal !== null && <DetailsModal data={props.data[openedModal]} />}
+			<DetailsModal
+				onClose={() => setOpenedModal(null)}
+				isOpen={openedModal !== null}
+				data={props.data[openedModal]}
+			/>
 		</>
 	);
 };
