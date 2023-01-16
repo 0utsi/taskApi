@@ -1,11 +1,6 @@
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FC, useState } from "react";
-import { Datum } from "../Interfaces/DataInterface";
-
-// interface searchBarProps {
-// 	ids: number[];
-// }
 
 export const SearchBar = (props) => {
 	const [idToFilter, setIdToFilter] = useState("");

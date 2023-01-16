@@ -34,7 +34,7 @@
 	margin-top: 2rem;
 	font-weight: 200;
 	color: white;
-	font-size: 1.2rem;
+	font-size: 1rem;
 	text-align: center;
 }
 
@@ -72,7 +72,13 @@ input::-webkit-inner-spin-button {
 	height: 300px;
 	font-family: 'Montserrat', sans-serif;
 	font-weight: bold;
+	margin: 1rem;
   }
+
+.singleProduct {
+	height: fit-content!important;
+	width: 1000px;
+}
 
 .tHead {
 	background-color: gray;
