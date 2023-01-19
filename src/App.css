@@ -73,6 +73,9 @@ input::-webkit-inner-spin-button {
 	font-family: 'Montserrat', sans-serif;
 	font-weight: bold;
 	margin: 1rem;
+	border-radius: 50%;
+
+	border-collapse: collapse;
   }
 
 .singleProduct {
